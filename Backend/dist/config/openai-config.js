@@ -2,7 +2,7 @@
 import OpenAI from "openai";
 export const configureOpenAI = () => {
     if (!process.env.OPENAI_API_KEY) {
-        throw new Error("OPEN_AI_SECRET is not defined");
+        throw new Error("OPENAI_API_KEY is not defined");
     }
     return new OpenAI({
         apiKey: process.env.OPENAI_API_KEY,

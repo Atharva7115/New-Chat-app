@@ -10,9 +10,9 @@ export const createToken = (id: string, email: string, expiresIn: Expiry): strin
     throw new Error("JWT_SECRET is not defined in environment variables");
   }
 
-  // Ensure options are typed correctly
+  
   const options: SignOptions = {
-    expiresIn: expiresIn, // e.g., "1h", "7d", etc.
+    expiresIn: expiresIn, 
   };
 
   const token = jwt.sign(payload, secret, options);
@@ -43,26 +43,4 @@ export const verifyToken = async (
   });
 };
 
-
-// export const verifyToken = (
-//   req: Request,
-//   res: Response,
-//   next: NextFunction
-// ) => {
-//   const token = req.signedCookies[COOKIE_NAME];
-
-//   if (!token || token.trim() === "") {
-//     return res.status(401).json({ message: "Token Not Received" });
-//   }
-
-//   jwt.verify(token, process.env.JWT_SECRET as string, (err, decoded) => {
-//     if (err || !decoded) {
-//       console.error("JWT error:", err?.message);
-//       return res.status(401).json({ message: "Token Expired or Invalid" });
-//     }
-
-//     res.locals.jwtData = decoded;
-//     next();
-//   });
-// };
 

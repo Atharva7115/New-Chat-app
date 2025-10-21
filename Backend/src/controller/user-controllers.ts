@@ -12,7 +12,7 @@ const cookieOptions: CookieOptions = {
   path: "/",
   secure: isProd,
   sameSite: isProd ? "none" : "lax",  
-  domain: isProd ? process.env.BACKEND_DOMAIN : "localhost",
+ 
 };
 
 export const getAllUsers = async (req: Request, res: Response) => {

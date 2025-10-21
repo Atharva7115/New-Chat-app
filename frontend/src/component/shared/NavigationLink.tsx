@@ -1,21 +1,46 @@
+// src/component/shared/NavigationLink.tsx
+import React from "react";
 import { Link } from "react-router-dom";
 
-type Props = {
+interface Props {
   to: string;
-  bg: string;
   text: string;
-  textColor: string;
-  onClick?: () => Promise<void>;
-};
-const NavigationLink = (props: Props) => {
+  bg?: string;
+  textColor?: string;
+  onClick?: () => void;
+  sxHover?: React.CSSProperties; // Add sxHover here
+}
+
+const NavigationLink: React.FC<Props> = ({
+  to,
+  text,
+  bg = "transparent",
+  textColor = "white",
+  onClick,
+  sxHover,
+}) => {
+  const [hover, setHover] = React.useState(false);
+
   return (
     <Link
-      onClick={props.onClick}
-      className="nav-link"
-      to={props.to}
-      style={{ background: props.bg, color: props.textColor }}
+      to={to}
+      onClick={onClick}
+      style={{
+        background: bg,
+        color: textColor,
+        padding: "10px 20px",
+        borderRadius: "30px",
+        textDecoration: "none",
+        fontWeight: 600,
+        display: "inline-block",
+        transition: "all 0.3s ease",
+        transform: hover && sxHover?.transform ? sxHover.transform : "none",
+        boxShadow: hover && sxHover?.boxShadow ? sxHover.boxShadow : "none",
+      }}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      {props.text}
+      {text}
     </Link>
   );
 };

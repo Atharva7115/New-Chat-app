@@ -1,26 +1,41 @@
+import TextField, { TextFieldProps } from "@mui/material/TextField";
 
-import TextField from "@mui/material/TextField";
-type Props = {
+type Props = TextFieldProps & {
   name: string;
   type: string;
   label: string;
 };
-const CustomizedInput = (props: Props) => {
+
+const CustomizedInput = ({ name, type, label, sx, ...rest }: Props) => {
   return (
     <TextField
+      fullWidth
+      name={name}
+      label={label}
+      type={type}
       margin="normal"
-      InputLabelProps={{ style: { color: "white" } }}
-      name={props.name}
-      label={props.label}
-      type={props.type}
+      variant="outlined"
+      InputLabelProps={{
+        style: { color: "#94a3b8", fontWeight: 500 },
+      }}
       InputProps={{
         style: {
-          width: "400px",
           borderRadius: 10,
-          fontSize: 20,
-          color: "white",
+          fontSize: 16,
+          color: "#e2e8f0",
+          backgroundColor: "#111111",
         },
       }}
+      sx={{
+        width: "100%",
+        maxWidth: "400px",
+        "& .MuiOutlinedInput-root": {
+          "& fieldset": { borderColor: "#00fffc" },
+          "&:hover fieldset": { borderColor: "#00fffccc" },
+        },
+        ...sx, 
+      }}
+      {...rest}
     />
   );
 };

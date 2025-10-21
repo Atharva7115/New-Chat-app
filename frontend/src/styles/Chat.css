@@ -1,0 +1,65 @@
+.chat-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: radial-gradient(circle at top, #0a0a0a 0%, #000 100%);
+  color: white;
+  overflow: hidden;
+  position: relative;
+  padding: 10px;
+}
+
+/* Background subtle texture */
+.chat-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/dark-mosaic.png");
+  opacity: 0.05;
+  z-index: 0;
+}
+
+/* Chat input area */
+.chat-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-radius: 14px;
+  margin: 20px;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 20px rgba(0, 255, 252, 0.1);
+  position: sticky;
+  bottom: 10px;
+  z-index: 3;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 12px 18px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #e0e0e0;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+}
+
+.chat-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.send-button {
+  color: #00fffc !important;
+  background: rgba(0, 255, 252, 0.1) !important;
+  transition: all 0.3s ease !important;
+  border-radius: 50% !important;
+  padding: 10px !important;
+}
+
+.send-button:hover {
+  background: rgba(0, 255, 252, 0.25) !important;
+  transform: scale(1.15);
+  box-shadow: 0 0 10px #00fffc;
+}

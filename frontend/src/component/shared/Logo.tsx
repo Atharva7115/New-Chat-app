@@ -1,33 +1,34 @@
 import { Link } from "react-router-dom";
 import Typography from "@mui/material/Typography";
+
 const Logo = () => {
   return (
     <div
       style={{
         display: "flex",
-        marginRight: "auto",
         alignItems: "center",
         gap: "15px",
       }}
     >
-      <Link to={"/"}>
+      <Link to={"/"} style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
         <img
           src="openai.png"
           alt="openai"
-          width={"30px"}
-          height={"30px"}
+          width={"40px"}
+          height={"40px"}
           className="image-inverted"
         />
-      </Link>{" "}
+      </Link>
       <Typography
         sx={{
           display: { md: "block", sm: "none", xs: "none" },
-          mr: "auto",
           fontWeight: "800",
-          textShadow: "2px 2px 20px #000",
+          fontSize: "24px",
+          color: "#00fffc",
+          textShadow: "0 0 10px rgba(0, 255, 252, 0.3)",
         }}
       >
-        <span style={{ fontSize: "20px" }}>MERN</span>-GPT
+        MERN-GPT
       </Typography>
     </div>
   );

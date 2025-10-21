@@ -1,66 +1,126 @@
-import { Box, useMediaQuery, useTheme } from "@mui/material";
-
-// 
+import { Box, Typography } from "@mui/material";
 import TypingAnim from "../component/typer/TypingAnim";
 import Footer from "../component/footer/Footer";
+import NavigationLink from "../component/shared/NavigationLink";
 
 const Home = () => {
-  const theme = useTheme();
-  const isBelowMd = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <Box width={"100%"} height={"100%"}>
+    <Box
+      sx={{
+        background: "radial-gradient(circle at top, #0f2027, #081016 70%)",
+        color: "#fff",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        alignItems: "center",
+        textAlign: "center",
+        overflowX: "hidden",
+      }}
+    >
+      {/* Hero Section */}
+      <Box
+        sx={{
+          mt: 10,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          px: 2,
+        }}
+      >
+        <Typography
+          variant="h3"
+          sx={{
+            fontWeight: 700,
+            mb: 2,
+            background: "linear-gradient(90deg, #00fffc, #00c6ff)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+          }}
+        >
+          Chat with AI. Learn. Create. Explore.
+        </Typography>
+
+        <Box sx={{ mb: 4 }}>
+          <TypingAnim />
+        </Box>
+
+        <Typography
+          variant="body1"
+          sx={{
+            color: "#ccc",
+            maxWidth: "700px",
+            mb: 6,
+            fontSize: "1.1rem",
+          }}
+        >
+          Your intelligent chatbot powered by OpenAI — designed to answer,
+          assist, and inspire you. Built for conversations that feel natural,
+          creative, and human-like.
+        </Typography>
+
+         <NavigationLink
+                bg="#00fffc"
+                to="/chat"
+                text="Start Chatting"
+                textColor="#0f172a"
+                sxHover={{
+                  transform: "scale(1.05)",
+                  boxShadow: "0 0 15px #00fffc",
+                }}
+              />
+
+      </Box>
+
+      {/* Image Section */}
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: "900px",
+          mx: "auto",
+          borderRadius: "25px",
+          overflow: "hidden",
+          boxShadow: "0 0 20px rgba(0,255,252,0.3)",
+          border: "2px solid rgba(0,255,252,0.4)",
+          my: 8,
+          transition: "all 0.4s ease",
+          "&:hover": {
+            transform: "scale(1.02)",
+            boxShadow: "0 0 20px rgba(0,255,252,0.5)",
+          },
+        }}
+      >
+        <img
+          src="image.png"
+          alt="AI Chatbot Demo"
+          style={{ width: "100%", borderRadius: "25px" }}
+        />
+      </Box>
+
+      {/* Icons / Partner Logos */}
       <Box
         sx={{
           display: "flex",
-          width: "100%",
-          flexDirection: "column",
-          alignItems: "center",
-          mx: "auto",
-          mt: 3,
+          justifyContent: "center",
+          gap: 10,
+          mb: 6,
+          flexWrap: "wrap",
         }}
       >
-        <Box>
-          <TypingAnim />
-        </Box>
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            flexDirection: { md: "row", xs: "column", sm: "column" },
-            gap: 5,
-            my: 10,
-          }}
-        >
-          <img
-            src="robot.png"
-            alt="robot"
-            style={{ width: "200px", margin: "auto" }}
-          />
-          <img
-            className="image-inverted rotate"
-            src="openai.png"
-            alt="openai"
-            style={{ width: "200px", margin: "auto" }}
-          />
-        </Box>
-        <Box sx={{ display: "flex", mx: "auto" }}>
-          <img
-            src="chat.png"
-            alt="chatbot"
-            style={{
-              display: "flex",
-              margin: "auto",
-              width: isBelowMd ? "80%" : "60%",
-              borderRadius: 20,
-              boxShadow: "-5px -5px 105px #64f3d5",
-              marginTop: 20,
-              marginBottom: 20,
-              padding: 10,
-            }}
-          />
-        </Box>
+       
       </Box>
+
       <Footer />
+
+      {/* Hover Effects */}
+      <style>
+        {`
+          .hover-img:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 20px #00fffc);
+          }
+        `}
+      </style>
     </Box>
   );
 };
